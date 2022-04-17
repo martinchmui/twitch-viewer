@@ -1,0 +1,46 @@
+{
+  "name": "twitch-viewer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@twurple/api": "^5.0.18",
+    "@twurple/auth": "^5.0.18",
+    "axios": "^0.26.1",
+    "eslint-config-react-app": "^7.0.1",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.2.3",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2",
+    "react-scripts": "5.0.0",
+    "react-twitch-embed": "^2.1.0",
+    "react-twitch-embed-video": "^3.0.2",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
