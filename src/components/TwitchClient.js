@@ -134,6 +134,7 @@ const TwitchClient = (props) => {
         if (props.settings.autojoin) {
             setStreamsState()
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useInterval(() => {
