@@ -1,3 +1,3 @@
 # Redirects from what the browser requests to what we serve
-/redirect              https://twitch-viewer.netlify.app/redirect
+/* /index.html 200
 
