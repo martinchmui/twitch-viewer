@@ -1,6 +1,20 @@
 import { combineReducers } from 'redux';
 import _ from 'lodash';
 
+function safelyParseJSON(json) {
+    let parsed
+    try {
+        parsed = JSON.parse(json)
+    } catch (e) {
+    }
+    return parsed
+}
+
+const persistedState = localStorage.getItem('settings')
+    ? safelyParseJSON(localStorage.getItem('settings'))
+    : { videosPerSlide: 1, autojoin: true, darkmode: true }
+
+
 const loginReducer = (state = { loggedIn: false, username: '' }, action) => {
     switch (action.type) {
         case 'LOGGED_IN':
@@ -120,7 +134,7 @@ const inputReducer = (state = { chat: '', player: '' }, action) => {
     }
 }
 
-const settingsReducer = (state = JSON.parse(localStorage.getItem('settings')), action) => {
+const settingsReducer = (state = persistedState, action) => {
     switch (action.type) {
         case 'MAX_VIDEOS':
             localStorage.setItem('settings', JSON.stringify({ ...state, videosPerSlide: action.payload }))

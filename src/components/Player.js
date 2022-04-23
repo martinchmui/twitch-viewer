@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import ReactTwitchEmbedVideo from "react-twitch-embed-video"
 import { Carousel } from 'react-bootstrap';
 import { slideIndex, carouselControls, focusStream } from '../actions';
-import logo from '../assets/logo.png'
 import _ from 'lodash';
 
 const Player = (props) => {
     const videosArray = _.chunk(props.player, props.settings.videosPerSlide)
     return (
-        <div id={props.settings.darkmode ? 'playdivdark' : 'playdivlight'}
-            className='rootdiv'
-            style={!props.visibility.chat ?
-                { width: '100%', backgroundImage: `url(${logo})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center' } :
-                { backgroundImage: `url(${logo})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }
+        <div id='playdiv'
+            className={
+                `${props.settings.darkmode ? 'playdivdark' : 'playdivlight'} 
+                ${!props.visibility.chat ? 'maxwidth' : ''}
+                ${props.visibility.chatOnly && props.visibility.chat ? 'hidden' : ''}
+                `
             }
             onMouseEnter={() => props.carouselControls(true)}
             onMouseLeave={() => props.carouselControls(false)}
@@ -23,7 +23,7 @@ const Player = (props) => {
                 controls={props.player.length === 1 || videosArray.length === 1 ? false :
                     props.visibility.carouselControls && (props.length > 1 || videosArray.length > 1) ? true : false
                 }
-                style={props.visibility.chatOnly && props.visibility.chat ? { visibility: 'hidden' } : {}}
+                className={`${props.visibility.chatOnly && props.visibility.chat ? 'hidden' : ''}`}
                 indicators={props.player.length === 1 || videosArray.length === 1 ? false : true}
                 onSelect={(e) => {
                     props.slideIndex(e)
@@ -36,7 +36,7 @@ const Player = (props) => {
                 {props.settings.videosPerSlide === 1 ?
                     props.player.map(stream => {
                         return (
-                            <Carousel.Item key={stream}>
+                            <Carousel.Item key={stream} className={`${!props.visibility.chat ? 'maxwidth' : ''}`}>
                                 <div className='single'>
                                     <ReactTwitchEmbedVideo
                                         channel={stream}
@@ -52,7 +52,10 @@ const Player = (props) => {
                     }) :
                     videosArray.map((array, key) => {
                         return (
-                            <Carousel.Item key={key}>
+                            <Carousel.Item 
+                            key={key}
+                            id={array.length === 4 ? 'carouselflex': ''}
+                            >
                                 {array.map((stream) => {
                                     return (
                                         <div

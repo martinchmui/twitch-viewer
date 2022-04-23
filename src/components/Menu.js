@@ -49,12 +49,19 @@ const Menu = (props) => {
     const streams = [...props.userAddedStreams, ...props.followedStreams]
 
     return (
-        <div id={
-            props.settings.darkmode ? 'menudivdark' : 'menudivlight'}
-            className='rootdiv' style={props.visibility.menu ? { width: '340px' } : {}
-            }>
+        <div
+            id='menudiv'
+            className={
+                `${props.visibility.menu ? 'expandmenudiv' : 'collapsemenudiv'}
+                ${!props.visibility.chat ? 'menudivnochat' : 'menudivwithchat'}
+                ${props.visibility.chat && props.player.length !== 0 && !props.visibility.menu ? 'mobile': ''}
+                `
+            }
+        >
             <img
-                className={props.settings.darkmode ? 'icons' : ''}
+                className={
+                    `icons ${!props.visibility.chat ? 'optionsnochat' : 'optionswithchat'}`
+                }
                 id='options'
                 src={options}
                 alt='Options and settings'
@@ -65,20 +72,25 @@ const Menu = (props) => {
                 }}
             />
             <img
-                className={props.settings.darkmode ? 'icons' : ''}
-                id='expand'
+                className={
+                    `icons
+                    ${props.visibility.chat ? 'hidden' : ''}`
+                }
+                id={props.visibility.menu ? 'expandv2' : 'expand'}
                 src={expand}
                 alt='Expand Chat'
                 title='Expand Chat'
                 onClick={() => props.toggleChat(!props.visibility.chat)}
-                style={props.visibility.chat ? { display: 'none' } : props.visibility.menu ? { marginTop: '0px', borderTop: 'none' } : {}}
             />
             <div id='menuContent'
-                style={!props.visibility.menu ? { display: 'none' } : !props.visibility.chat && props.visibility.menu ? { marginTop: '0px' } : {}}
+                className={
+                    `${!props.visibility.menu ? 'hidden' : ''}
+                    ${!props.visibility.chat ? 'menucontentnochat' : 'menucontentwithchat'}`
+                }
             >
-                <div className='menublock' style={props.visibility.settings ? { display: 'none' } : {}}>
+                <div className={`menublock ${props.visibility.settings ? 'hidden' : ''}`}>
                     {!props.login.loggedIn ?
-                        <div className='menurow' style={{ display: 'inline-block' }} >
+                        <div className='menurow' >
                             <span>Welcome to Twitch Viewer</span>
                             <TwitchClient />
                         </div> :
@@ -97,8 +109,7 @@ const Menu = (props) => {
                                     type='text'
                                     disabled
                                     value={stream}
-                                    className='newInput'
-                                    style={{ background: 'gray' }}
+                                    className='newInput disabled'
                                 />
                                 <img
                                     className='icons menuIcons'
@@ -115,7 +126,7 @@ const Menu = (props) => {
                                             props.slideIndex(index)
                                         }
                                     }}
-                                    style={props.visibility.focusStream === stream ? { background: 'yellow' } : {}}
+                                    id={`${props.visibility.focusStream === stream ? 'highlighted' : ''}`}
                                 />
                                 <img
                                     className='icons menuIcons'
@@ -321,8 +332,11 @@ const Menu = (props) => {
                                         props.selectMenu('')
                                         props.chatOnly(false)
                                     }
-                                    if (props.player.length !== 0) {
+                                    if (newStreamArray.length === 0) {
                                         props.toggleChat(false)
+                                    }
+                                    if(newStreamArray.length === 0 && props.player.length === 0) {
+                                        props.toggleChat(true)
                                     }
                                 }} />
                         </div> : null
@@ -368,7 +382,7 @@ const Menu = (props) => {
                             }} />
                     </div>
                 </div>
-                <div className='menublock' style={!props.visibility.settings ? { display: 'none' } : {}}>
+                <div className={`menublock ${!props.visibility.settings ? 'hidden' : ''}`} >
                     <div className='menurow'>
                         Layout:
                     </div>
@@ -422,7 +436,7 @@ const Menu = (props) => {
                             </label>
                         </div>
                     </form>
-                    <div className='menurow' style={{ display: 'flex' }}>
+                    <div className='menurow toggle'>
                         <span>Toggle Light/Dark Mode:</span>
                         <input
                             type='checkbox'

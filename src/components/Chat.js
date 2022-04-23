@@ -16,9 +16,8 @@ const Chat = (props) => {
 
     return (
         <div
-            id={props.darkmode ? 'chatdivdark' : 'chatdivlight'}
-            className='rootdiv'
-            style={props.chatOnly && props.visibility ? { width: '100%' } : props.visibility ? {} : { display: 'none' }}
+            id='chatdiv'
+            className={`${props.darkmode ? 'dark' : 'light'} ${props.visibility ? '' : 'hidden'} ${props.chatOnly && props.visibility ? 'maxwidth' : ''}`}
         >
             <div id='chatnav'>
                 <img className={props.darkmode ? 'icons' : ''} src={left} alt='Previous Chat' title='Previous Chat' onClick={() => {
@@ -55,7 +54,10 @@ const Chat = (props) => {
                     }
                 }} />
             </div>
-            <div id='icondiv' style={props.darkmode ? { background: 'black' } : { background: 'white' }}>
+            <div
+                id='icondiv'
+                className={`${props.darkmode ? 'dark' : 'light'}`}
+            >
                 <img
                     className={props.darkmode ? 'icons' : ''}
                     src={collapse}
@@ -67,7 +69,7 @@ const Chat = (props) => {
                     }}
                 />
             </div>
-            <div id='chatwin'>
+            <div id='chatwin' className={`${props.chatOnly && props.visibility ? 'maxwidth' : ''}`}>
                 {props.streams.map((stream) => {
                     if (stream.name === props.selected) {
                         return (
@@ -78,12 +80,17 @@ const Chat = (props) => {
                                     theme={props.darkmode ? 'dark' : 'light'}
                                     height='100%'
                                     width='100%'
+                                    className={`${props.chatOnly && props.visibility ? 'maxwidth' : ''}`}
                                 />
                             </div>
                         )
                     }
                     return (
-                        <div key={stream.key} className='chatEmbed' id={`c-${stream.name}`} style={{ visibility: 'hidden' }}>
+                        <div
+                            key={stream.key}
+                            className='chatEmbed hidden'
+                            id={`c-${stream.name}`}
+                        >
                             <TwitchChat
                                 channel={stream.name}
                                 id={stream.name}

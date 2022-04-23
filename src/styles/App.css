@@ -1,23 +1,4 @@
 /*App*/
-.rootdiv,
-#chatdivdark div , #chatdivlight div{
-    position: absolute;
-    overflow: hidden;
-    background: inherit;
-}
-
-select {
-    box-sizing: content-box;
-    border: 0;
-    border-radius: 5px;
-    padding: 2px 5px;
-    font-family: inherit;
-    font-size: inherit;
-    letter-spacing: inherit;
-    background: #DDDDDD;
-    color: black;
-}
-
 body {
     margin: 0;
     min-width: 340px;
@@ -25,10 +6,6 @@ body {
     font-family: arial, sans-serif;
     letter-spacing: 0.05em;
     color: #CCC;
-}
-
-.icons {
-    filter: invert(1)
 }
 
 img,
@@ -49,6 +26,219 @@ select {
     background: #DDDDDD;
     color: black;
 }
+
+#container {
+    display: flex
+}
+
+.hidden {
+    display: none !important;
+}
+
+.maxwidth {
+    width: 100%
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.dark {
+    background: black;
+}
+
+.light {
+    background: white;
+}
+
+/*Chat*/
+#chatsel {
+    padding: 3px;
+    width: 40%;
+}
+
+#chatdiv,
+#chatwin,
+#chatwin div {
+    height: 100vh;
+    z-index: 0;
+}
+
+#chatdiv {
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#chatnav {
+    z-index: 1;
+    left: 50px;
+    right: 50px;
+    text-align: center;
+    font-size: 0.75em;
+    background: inherit;
+}
+
+#icondiv {
+    z-index: 1;
+    margin-top: -50px;
+    width: 50px;
+}
+
+#chatwin {
+    margin-top: -50px;
+}
+/*Menu*/
+#menudiv {
+    position: absolute;
+    min-width: 50px;
+    right: 0px;
+    background-color: #6969d3;
+}
+
+.menudivwithchat {
+    margin-top: 50px;
+}
+
+.menudivnochat {
+    margin-top: 0px;
+}
+
+#options {
+    float: right;
+    background-color: #96962c;
+}
+
+.optionswithchat {
+    margin-top: -50px;
+}
+
+.optionsnochat {
+    margin-top: 0px;
+}
+
+#menuContent {
+    font-size: 0.8em;
+    line-height: 1.5em;
+    overflow: auto;
+    background: rgb(51, 51, 102);
+    max-height: 567px;
+}
+
+.menucontentwithchat {
+    margin-top: 0px;
+}
+
+.menucontentnochat {
+    margin-top: 50px;
+}
+
+.collapsemenudiv {
+    width: 50px
+}
+
+.expandmenudiv {
+    width: 340px;
+}
+
+.menublock {
+    padding: 0 20px 10px 20px;
+    overflow: hidden;
+}
+
+.menurow {
+    padding: 7px 0;
+    position: relative;
+}
+
+#menuchatsel {
+    width: 115px;
+}
+
+.newInput {
+    width: 115px;
+    height: 15.34px;
+    margin: 0;
+}
+
+.icons {
+    filter: invert(1)
+}
+
+.menuIcons {
+    margin-left: 15px;
+}
+
+#settings {
+    float: left;
+    width: 23%;
+    padding: 5px 0;
+    margin: 0 2px;
+    border-radius: 20px;
+    background: #0070BA;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #CCC;
+    border: none;
+}
+
+#highlighted {
+    background: #d24d00;
+}
+
+.toggle {
+    display: flex
+}
+
+.disabled {
+    background: gray;
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.label {
+    background-color: #111;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    height: 26px;
+    width: 50px;
+    bottom: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.label .ball {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 22px;
+    width: 22px;
+    transform: translateX(0px);
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked+.label .ball {
+    transform: translateX(24px);
+}
+
 .link-button {
     background-color: transparent;
     border: none;
@@ -62,6 +252,7 @@ select {
     margin-left: 5px;
     font-style: italic;
 }
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -120,204 +311,57 @@ select {
     }
 }
 
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-}
-
-/*Chat*/
-#chatdivdark {
-    background: black;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    width: 340px;
-}
-#chatdivlight {
-    background: white;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    width: 340px;
-}
-
-#chatnav {
-    left: 50px;
-    right: 50px;
-    text-align: center;
-    font-size: 0.75em;
-    z-index: 1;
-}
-
-#chatwin {
-    width: 100%;
-    top: 0px;
-    bottom: 0px;
-}
-
-.chatEmbed {
-    width: 100%;
-    bottom: 0px;
-    top: 0px
-}
-
-#chatsel {
-    padding: 3px;
-    width: 55%;
-}
-
-#chatvis {
-    z-index: 1;
-    position: absolute;
-    overflow: hidden;
-}
-
-#icondiv {
-    width: 50px;
-    height: 50px;
-    z-index: 1;
-}
-
-/*Menu*/
-#menudivdark {
-    min-width: 50px;
-    min-height: 50px;
-    right: 0px;
-    background: black;
-}
-#menudivlight {
-    min-width: 50px;
-    min-height: 50px;
-    right: 0px;
-    background: white;
-}
-
-#menutitle {
-    padding-top: 15px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#menuContent {
-    font-size: 0.8em;
-    line-height: 1.5em;
-    overflow: auto;
-    background: rgb(51, 51, 102);
-    max-height: 567px;
-    margin-top: 50px;
-}
-
-.menublock {
-    padding: 0 20px 10px 20px;
-    overflow: hidden;
-}
-
-.menurow {
-    padding: 7px 0;
-    position: relative;
-}
-
-#menuchatsel {
-    width: 115px;
-}
-
-.newInput {
-    width: 115px;
-    height: 15.34px;
-    margin: 0;
-}
-
-#options {
-    position: absolute;
-    right: 0px;
+#expandv2 {
+    float: left;
+    background-color: #96962c
 }
 
 #expand {
-    margin-top: 50px;
-    border-top: 1px solid gray;
+    float: right;
+    background-color: #96962c;
 }
 
-.menuIcons {
-    margin-left: 15px;
-}
-.checkbox {
-    opacity: 0;
-    position: absolute;
-}
-
-.label {
-    background-color: #111;
-    border-radius: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    position: relative;
-    height: 26px;
-    width: 50px;
-    bottom: 4px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.label .ball {
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    height: 22px;
-    width: 22px;
-    transform: translateX(0px);
-    transition: transform 0.2s linear;
-}
-
-.checkbox:checked + .label .ball {
-    transform: translateX(24px);
-}
-#settings {
-    float: left;
-    width: 23%;
-    padding: 5px 0;
-    margin: 0 2px;
-    border-radius: 20px;
-    background: #0070BA;
-    font-size: 0.75em;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: #CCC;
-    border: none;
-}
 /*Player*/
-#playdivdark {
-    background: rgb(50, 50, 60);
-    height: 100%;
-    left: 0px;
-    right: 340px;
-}
-#playdivlight {
-    background: rgb(205, 205, 195);
-    height: 100%;
-    left: 0px;
-    right: 340px;
+#playdiv,
+.carousel-item {
+    height: 100vh;
 }
 
-.carousel,
-.carousel-inner,
-.carousel-item {
-    height: 100%;
+#playdiv {
+    width: 100%;
+    background-image: url('/src/assets/logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 0;
+}
+
+.playdivdark {
+    background: rgb(50, 50, 60);
+}
+
+.playdivlight {
+    background: rgb(205, 205, 195);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    top: 45%;
+    bottom: 45%;
+}
+
+.carousel-control-prev {
+    left: -25px
+}
+
+.carousel-control-next {
+    right: -25px
 }
 
 .half {
     height: 50%;
 }
+
 .quarter {
     height: 50%;
     width: 50%;
@@ -337,7 +381,37 @@ select {
     display: block
 }
 
-.carousel-control-prev, .carousel-control-next {
-    top: 45%;
-    bottom: 45%;
+#carouselflex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Mobile */
+@media only screen and (max-width: 529px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #playdiv,
+    .carousel-item {
+        height: 40vh;
+    }
+
+    #chatdiv,
+    #chatwin,
+    #chatwin div {
+        height: 60vh;
+    }
+
+    .expandmenudiv {
+        width: 100%;
+    }
+
+    .maxwidth {
+        height: 100vh !important;
+    }
+
+    .mobile {
+        top: 40vh
+    }
 }

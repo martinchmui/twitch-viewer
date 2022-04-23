@@ -6,7 +6,7 @@ import Player from './Player';
 
 const App = () => {
     return (
-        <div>
+        <div id='container'>
             <Player />
             <Chat />
             <Menu />
