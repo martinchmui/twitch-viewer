@@ -1,6 +1,6 @@
 # Twitch Viewer
 
-Twitch Viewer: Alternate way to watch your favourite Twitch streams.
+Alternate way to watch your favourite Twitch streams.
 
 ## Built With
 
