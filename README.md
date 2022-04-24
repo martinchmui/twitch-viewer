@@ -31,8 +31,3 @@ REACT_APP_TWITCH_CLIENT_REDIRECT=URI
 ```
 
 Steps on how to obtain app variables are detailed at [Twitch API docs](https://dev.twitch.tv/docs/authentication/register-app)# twitch-viewer
-# twitch-viewer
-# twitch-viewer
-# twitch-viewer
-# twitch-viewer
-# twitch-viewer
