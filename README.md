@@ -2,7 +2,7 @@
 ![](preview.png)
 Alternate way to watch your favourite Twitch streams.
 
-![](preview.png)
+![](previewmenu.png)
 Add streams/chats you want in the options menu. Sign in to your Twitch account to use the auto-join live followed channels' chat feature.
 
 ## Built With
