@@ -299,10 +299,12 @@ const Menu = (props) => {
                                 title='Add Video'
                                 onClick={() => {
                                     const newArray = [...props.player, props.selected]
+                                    const videosArray = _.chunk(newArray, props.settings.videosPerSlide)
+                                    const index = videosArray.findIndex(array => array.includes(props.selected))
                                     props.addVideo(props.selected);
                                     props.chatOnly(false);
                                     props.selectNav(props.selected);
-                                    props.slideIndex(newArray.length - 1)
+                                    props.slideIndex(index)
                                 }}
                             />
                             <img
